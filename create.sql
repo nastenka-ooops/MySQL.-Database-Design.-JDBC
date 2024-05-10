@@ -1,137 +1,145 @@
-CREATE DATABASE flower_shop;
+CREATE DATABASE IF NOT EXISTS flower_shop;
 USE flower_shop;
 
-CREATE TABLE `flower_shop`.`flower` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `height` INT NOT NULL,
-  `price` DOUBLE NOT NULL,
-  `betterBefore` INT NOT NULL);
-  
-ALTER TABLE `flower_shop`.`flower`
-ADD PRIMARY KEY (id);
+-- auto-generated definition
+create table product
+(
+    id     int auto_increment
+        primary key,
+    name   varchar(255) not null,
+    height int          not null,
+    price  double       not null
+);
 
-ALTER TABLE `flower_shop`.`flower`
-MODIFY COLUMN id INT AUTO_INCREMENT;
+-- auto-generated definition
+create table compatibility
+(
+    dominant_flower_id   int    not null,
+    compatible_flower_id int    not null,
+    optimal_quantity     double not null,
+    constraint compatible_flower
+        foreign key (compatible_flower_id) references product (id)
+            on update cascade on delete cascade,
+    constraint dominant_flower_id
+        foreign key (dominant_flower_id) references product (id)
+            on update cascade on delete cascade
+);
 
-CREATE TABLE `flower_shop`.`compatibility` (
-  `dominant_flower_id` INT NOT NULL,
-  `compatible_flower_idl` INT NOT NULL,
-  `optimal_quantity` DOUBLE NOT NULL);
-  
-ALTER TABLE `flower_shop`.`compatibility`
-ADD CONSTRAINT `dominant_flower_id`
-    FOREIGN KEY (`dominant_flower_id`)
-    REFERENCES `flower_shop`.`flower` (`id`)
-	ON DELETE CASCADE,
-ADD CONSTRAINT `compatible_flower`
-    FOREIGN KEY (`compatible_flower_idl`)
-    REFERENCES `flower_shop`.`flower` (`id`)
-	ON DELETE CASCADE;
+-- auto-generated definition
+create table customer
+(
+    id         int          not null
+        primary key,
+    first_name varchar(255) not null,
+    last_name  varchar(255) not null,
+    address    varchar(255) not null,
+    phone      varchar(255) not null,
+    email      varchar(255) not null,
+    constraint email_UNIQUE
+        unique (email),
+    constraint phone_UNIQUE
+        unique (phone)
+);
 
-CREATE TABLE `flower_shop`.`customer` (
-  `id` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(150) NOT NULL,
-  `phone` VARCHAR(20) NOT NULL,
-  `email` VARCHAR(45) NOT NULL);
-  
-ALTER TABLE `flower_shop`.`customer`
-ADD PRIMARY KEY (id);
+-- auto-generated definition
+create table employee
+(
+    id         int auto_increment
+        primary key,
+    first_name varchar(255) not null,
+    last_name  varchar(255) not null,
+    position   varchar(255) not null,
+    salary     double       not null,
+    hire_date  date         not null
+);
 
-ALTER TABLE `flower_shop`.`customer`
-MODIFY COLUMN id INT AUTO_INCREMENT;
+-- auto-generated definition
+create table inventory
+(
+    product_id    int  not null,
+    quantity      int  not null,
+    shipment_date date not null,
+    constraint product_id
+        foreign key (product_id) references product (id)
+            on update cascade on delete cascade
+);
 
-CREATE TABLE `flower_shop`.`order` (
-  `id` INT NOT NULL,
-  `date` DATE NOT NULL,
-  `customer_id` INT NOT NULL);
-    
-ALTER TABLE `flower_shop`.`order`
-ADD PRIMARY KEY (id),	
-ADD CONSTRAINT `customer_id`
-    FOREIGN KEY (`customer_id`)
-    REFERENCES `flower_shop`.`customer` (`id`)
-	ON DELETE CASCADE;
+-- auto-generated definition
+create table `order`
+(
+    id          int auto_increment
+        primary key,
+    date        date not null,
+    customer_id int  not null,
+    constraint customer_id
+        foreign key (customer_id) references customer (id)
+            on update cascade on delete cascade
+);
 
-ALTER TABLE `flower_shop`.`order`
-MODIFY COLUMN id INT AUTO_INCREMENT;
+create index customer_id_idx
+    on `order` (customer_id);
 
-CREATE TABLE `flower_shop`.`order_item` (
-  `order_id` INT NOT NULL,
-  `id_flower` INT NOT NULL,
-  `quantity` INT NOT NULL);
-  
-ALTER TABLE `flower_shop`.`order_item`
-ADD CONSTRAINT `order_id`
-    FOREIGN KEY (`order_id`)
-    REFERENCES `flower_shop`.`order` (`id`)
-	ON DELETE CASCADE,
-ADD CONSTRAINT `id_flower`
-    FOREIGN KEY (`id_flower`)
-    REFERENCES `flower_shop`.`flower` (`id`)
-    ON DELETE CASCADE;
+-- auto-generated definition
+create table order_item
+(
+    order_id   int not null,
+    product_id int not null,
+    quantity   int not null,
+    constraint order_id
+        foreign key (order_id) references `order` (id)
+            on update cascade on delete cascade,
+    constraint order_item_product_id
+        foreign key (product_id) references product (id)
+            on update cascade on delete cascade
+);
 
-CREATE TABLE `flower_shop`.`employee` (
-  `id` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `position` VARCHAR(45) NOT NULL,
-  `salary` DOUBLE NOT NULL,
-  `hire_date` DATE NOT NULL);
-  
-ALTER TABLE `flower_shop`.`employee`
-ADD PRIMARY KEY (id);
+create index product_id
+    on order_item (product_id);
 
-ALTER TABLE `flower_shop`.`employee`
-MODIFY COLUMN id INT AUTO_INCREMENT;
+-- auto-generated definition
+create table supplier
+(
+    id           int auto_increment
+        primary key,
+    company_name varchar(255) not null,
+    address      varchar(255) not null,
+    phone        varchar(255) not null,
+    email        varchar(255) not null,
+    constraint email
+        unique (email),
+    constraint phone
+        unique (phone)
+);
 
-CREATE TABLE `flower_shop`.`inventory` (
-  `flower_id` INT NOT NULL,
-  `quantity` INT NOT NULL,
-  `shipment_date` DATE NOT NULL);
+-- auto-generated definition
+create table shipment
+(
+    id          int auto_increment
+        primary key,
+    date        date not null,
+    supplier_id int  not null,
+    constraint supplier_id
+        foreign key (supplier_id) references supplier (id)
+            on update cascade on delete cascade
+);
 
-CREATE TABLE `flower_shop`.`supplier` (
-  `id` INT NOT NULL,
-  `company_name` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(150) NOT NULL,
-  `phone` VARCHAR(20) NOT NULL,
-  `email` VARCHAR(45) NOT NULL);
-  
-ALTER TABLE `flower_shop`.`supplier`
-ADD PRIMARY KEY (id);
+create index supplier_id_idx
+    on shipment (supplier_id);
 
-ALTER TABLE `flower_shop`.`supplier`
-MODIFY COLUMN id INT AUTO_INCREMENT;
+-- auto-generated definition
+create table shipment_item
+(
+    shipment_id int not null,
+    product_id  int not null,
+    quantity    int not null,
+    constraint shipment_id
+        foreign key (shipment_id) references shipment (id)
+            on update cascade on delete cascade,
+    constraint shipment_item_product_id
+        foreign key (product_id) references product (id)
+            on update cascade on delete cascade
+);
 
-CREATE TABLE `flower_shop`.`shipment` (
-  `id` INT NOT NULL,
-  `date` DATE NOT NULL,
-  `supplier_id` INT NOT NULL);
-    
-ALTER TABLE `flower_shop`.`shipment`
-ADD PRIMARY KEY (id),
-ADD CONSTRAINT `supplier_id`
-    FOREIGN KEY (`supplier_id`)
-    REFERENCES `flower_shop`.`supplier` (`id`)
-	ON DELETE CASCADE;
 
-ALTER TABLE `flower_shop`.`shipment`
-MODIFY COLUMN id INT AUTO_INCREMENT;
 
-CREATE TABLE `flower_shop`.`shipment_item` (
-  `shipment_id` INT NOT NULL,
-  `flower_id` INT NOT NULL,
-  `quantity` INT NOT NULL);
-
-ALTER TABLE `flower_shop`.`shipment_item`
-ADD CONSTRAINT `shipment_id`
-    FOREIGN KEY (`shipment_id`)
-    REFERENCES `flower_shop`.`shipment` (`id`)
-	ON DELETE CASCADE,
-ADD CONSTRAINT `flower_id`
-    FOREIGN KEY (`flower_id`)
-    REFERENCES `flower_shop`.`flower` (`id`)
-    ON DELETE CASCADE;
 

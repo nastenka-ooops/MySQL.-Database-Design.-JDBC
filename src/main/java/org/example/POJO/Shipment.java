@@ -6,14 +6,16 @@ public class Shipment {
     private long id;
     private Date date;
     private long supplierId;
+    private Status status;
 
     public Shipment() {
     }
 
-    public Shipment(long id, Date date, long supplierId) {
+    public Shipment(long id, Date date, long supplierId, Status status) {
         this.id = id;
         this.date = date;
         this.supplierId = supplierId;
+        this.status = status;
     }
 
     public long getId() {
@@ -39,4 +41,13 @@ public class Shipment {
     public void setSupplierId(long supplierId) {
         this.supplierId = supplierId;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
+
