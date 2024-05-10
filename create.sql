@@ -71,6 +71,7 @@ create table `order`
         primary key,
     date        date not null,
     customer_id int  not null,
+    status      int  not null,
     constraint customer_id
         foreign key (customer_id) references customer (id)
             on update cascade on delete cascade
@@ -78,6 +79,9 @@ create table `order`
 
 create index customer_id_idx
     on `order` (customer_id);
+
+create index status
+    on `order` (status);
 
 -- auto-generated definition
 create table order_item
@@ -118,6 +122,7 @@ create table shipment
         primary key,
     date        date not null,
     supplier_id int  not null,
+    status      int  not null,
     constraint supplier_id
         foreign key (supplier_id) references supplier (id)
             on update cascade on delete cascade
@@ -125,6 +130,9 @@ create table shipment
 
 create index supplier_id_idx
     on shipment (supplier_id);
+
+create index status
+    on shipment (status);
 
 -- auto-generated definition
 create table shipment_item
