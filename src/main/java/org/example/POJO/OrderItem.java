@@ -1,32 +1,32 @@
-package org.example;
+package org.example.POJO;
 
 public class OrderItem {
-    private int orderId;
-    private int flowerId;
+    private long orderId;
+    private long flowerId;
     private int quantity;
 
     public OrderItem() {
     }
 
-    public OrderItem(int orderId, int flowerId, int quantity) {
+    public OrderItem(long orderId, long flowerId, int quantity) {
         this.orderId = orderId;
         this.flowerId = flowerId;
         this.quantity = quantity;
     }
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 
-    public int getFlowerId() {
+    public long getFlowerId() {
         return flowerId;
     }
 
-    public void setFlowerId(int flowerId) {
+    public void setFlowerId(long flowerId) {
         this.flowerId = flowerId;
     }
 

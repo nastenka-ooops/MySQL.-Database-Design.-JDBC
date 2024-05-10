@@ -1,7 +1,7 @@
-package org.example;
+package org.example.POJO;
 
 public class Customer{
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String address;
@@ -11,7 +11,7 @@ public class Customer{
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName, String address, String phone, String email) {
+    public Customer(long id, String firstName, String lastName, String address, String phone, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,11 +20,11 @@ public class Customer{
         this.email = email;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

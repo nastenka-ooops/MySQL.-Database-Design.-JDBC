@@ -1,10 +1,10 @@
-package org.example;
+package org.example.POJO;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Employee {
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String position;
@@ -14,7 +14,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String position, BigDecimal salary, Date hireDate) {
+    public Employee(long id, String firstName, String lastName, String position, BigDecimal salary, Date hireDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,11 +23,11 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

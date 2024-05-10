@@ -1,26 +1,26 @@
-package org.example;
+package org.example.POJO;
 
 import java.util.Date;
 
 public class Inventory {
-    private int flowerId;
+    private long flowerId;
     private int quantity;
     private Date dateOfShipment;
 
     public Inventory() {
     }
 
-    public Inventory(int flowerId, int quantity, Date dateOfShipment) {
+    public Inventory(long flowerId, int quantity, Date dateOfShipment) {
         this.flowerId = flowerId;
         this.quantity = quantity;
         this.dateOfShipment = dateOfShipment;
     }
 
-    public int getFlowerId() {
+    public long getFlowerId() {
         return flowerId;
     }
 
-    public void setFlowerId(int flowerId) {
+    public void setFlowerId(long flowerId) {
         this.flowerId = flowerId;
     }
 

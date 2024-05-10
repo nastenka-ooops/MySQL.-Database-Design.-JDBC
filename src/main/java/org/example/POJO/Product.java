@@ -1,30 +1,27 @@
-package org.example;
+package org.example.POJO;
 
 import java.math.BigDecimal;
 
-public class Flower {
-    private int id;
+public class Product {
+    private long id;
     private String name;
     private int height;
     private BigDecimal price;
-    private int betterBefore;
-
-    public Flower() {
+    public Product() {
     }
 
-    public Flower(int id, String name, int height, BigDecimal price, int betterBefore) {
+    public Product(long id, String name, int height, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.height = height;
         this.price = price;
-        this.betterBefore = betterBefore;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -50,13 +47,5 @@ public class Flower {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public int getBetterBefore() {
-        return betterBefore;
-    }
-
-    public void setBetterBefore(int betterBefore) {
-        this.betterBefore = betterBefore;
     }
 }

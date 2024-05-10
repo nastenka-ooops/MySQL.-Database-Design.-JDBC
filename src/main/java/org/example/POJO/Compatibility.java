@@ -1,32 +1,32 @@
-package org.example;
+package org.example.POJO;
 
 public class Compatibility {
-    private int dominantFlowerId;
-    private int compatibleFlowerId;
+    private long dominantFlowerId;
+    private long compatibleFlowerId;
     private double optimalQuantity;
 
     public Compatibility() {
     }
 
-    public Compatibility(int dominantFlowerId, int compatibleFlowerId, double optimalQuantity) {
+    public Compatibility(long dominantFlowerId, long compatibleFlowerId, double optimalQuantity) {
         this.dominantFlowerId = dominantFlowerId;
         this.compatibleFlowerId = compatibleFlowerId;
         this.optimalQuantity = optimalQuantity;
     }
 
-    public int getDominantFlowerId() {
+    public long getDominantFlowerId() {
         return dominantFlowerId;
     }
 
-    public void setDominantFlowerId(int dominantFlowerId) {
+    public void setDominantFlowerId(long dominantFlowerId) {
         this.dominantFlowerId = dominantFlowerId;
     }
 
-    public int getCompatibleFlowerId() {
+    public long getCompatibleFlowerId() {
         return compatibleFlowerId;
     }
 
-    public void setCompatibleFlowerId(int compatibleFlowerId) {
+    public void setCompatibleFlowerId(long compatibleFlowerId) {
         this.compatibleFlowerId = compatibleFlowerId;
     }
 

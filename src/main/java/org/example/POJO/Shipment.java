@@ -1,26 +1,26 @@
-package org.example;
+package org.example.POJO;
 
 import java.util.Date;
 
 public class Shipment {
-    private int id;
+    private long id;
     private Date date;
-    private int supplierId;
+    private long supplierId;
 
     public Shipment() {
     }
 
-    public Shipment(int id, Date date, int supplierId) {
+    public Shipment(long id, Date date, long supplierId) {
         this.id = id;
         this.date = date;
         this.supplierId = supplierId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -32,11 +32,11 @@ public class Shipment {
         this.date = date;
     }
 
-    public int getSupplierId() {
+    public long getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(long supplierId) {
         this.supplierId = supplierId;
     }
 }
