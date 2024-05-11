@@ -1,6 +1,6 @@
 package org.example.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Shipment {
     private long id;

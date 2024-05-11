@@ -1,27 +1,27 @@
 package org.example.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Inventory {
-    private long flowerId;
+    private long productId;
     private int quantity;
-    private Date dateOfShipment;
+    private Date shipmentDate;
 
     public Inventory() {
     }
 
-    public Inventory(long flowerId, int quantity, Date dateOfShipment) {
-        this.flowerId = flowerId;
+    public Inventory(long productId, int quantity, Date shipmentDate) {
+        this.productId = productId;
         this.quantity = quantity;
-        this.dateOfShipment = dateOfShipment;
+        this.shipmentDate = shipmentDate;
     }
 
-    public long getFlowerId() {
-        return flowerId;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setFlowerId(long flowerId) {
-        this.flowerId = flowerId;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {
@@ -32,11 +32,11 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public Date getDateOfShipment() {
-        return dateOfShipment;
+    public Date getShipmentDate() {
+        return shipmentDate;
     }
 
-    public void setDateOfShipment(Date dateOfShipment) {
-        this.dateOfShipment = dateOfShipment;
+    public void setShipmentDate(Date shipmentDate) {
+        this.shipmentDate = shipmentDate;
     }
 }

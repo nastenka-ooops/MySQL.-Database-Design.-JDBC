@@ -64,6 +64,10 @@ create table inventory
             on update cascade on delete cascade
 );
 
+alter table inventory
+    add unique (product_id);
+
+
 -- auto-generated definition
 create table `order`
 (

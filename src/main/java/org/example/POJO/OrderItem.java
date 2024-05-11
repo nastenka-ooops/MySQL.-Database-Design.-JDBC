@@ -2,15 +2,15 @@ package org.example.POJO;
 
 public class OrderItem {
     private long orderId;
-    private long flowerId;
+    private long productId;
     private int quantity;
 
     public OrderItem() {
     }
 
-    public OrderItem(long orderId, long flowerId, int quantity) {
+    public OrderItem(long orderId, long productId, int quantity) {
         this.orderId = orderId;
-        this.flowerId = flowerId;
+        this.productId = productId;
         this.quantity = quantity;
     }
 
@@ -22,12 +22,12 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public long getFlowerId() {
-        return flowerId;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setFlowerId(long flowerId) {
-        this.flowerId = flowerId;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {

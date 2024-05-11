@@ -1,7 +1,8 @@
 package org.example.POJO;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Employee {
     private long id;
