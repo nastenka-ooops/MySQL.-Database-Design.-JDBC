@@ -13,6 +13,9 @@
   
     Connect program to created database using JDBC, test this connection with CRUD operations
 
+## Entity Relationship Diagram
+![erd](https://github.com/nastenka-ooops/MySQL.-Database-Design.-JDBC/blob/main/flower_shop_erd.png)
+
   ## Additional information
 * Author  __Brutskaya Anastasiya__
 * Date of creation __11.05.2024__
